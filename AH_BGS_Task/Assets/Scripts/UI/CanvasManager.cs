@@ -7,18 +7,7 @@ using DG.Tweening;
 
 public class CanvasManager : Singleton<CanvasManager>
 {
-    [SerializeField] TextMeshProUGUI moneyTxt;
-    private void OnEnable()
-    {
-        ConsumableManager.OnValueChanged += UpdateCanvasInfos;
-    }
-
-    private void OnDisable()
-    {
-        ConsumableManager.OnValueChanged -= UpdateCanvasInfos;
-    }
-
-    void UpdateCanvasInfos() {
-        moneyTxt.text = NumberFormatter.Format(ConsumableManager.Instance.GetConsumable(ConsumableType.Money).value, NumberFormat.Value);
+    public void OpenInventory() { 
+    
     }
 }

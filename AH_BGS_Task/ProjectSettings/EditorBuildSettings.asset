@@ -9,9 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main.unity
     guid: 91b9e95acad0f0345b47bea7c34c5538
   - enabled: 1
-    path: Assets/Scenes/Customization.unity
+    path: Assets/Scenes/Restaurant.unity
     guid: 77d4bd5c29bd4b441812510d605c8728
   - enabled: 1
-    path: Assets/Scenes/Restaurant.unity
+    path: Assets/Scenes/Customization.unity
     guid: 7791b994e80748f40b71c431a9e4fe2b
   m_configObjects: {}

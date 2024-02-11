@@ -10,7 +10,6 @@ public class FadeScreen : Singleton<FadeScreen>
     [SerializeField] RectTransform circleFade;
     [SerializeField] bool fadeInAtStart;
 
-
     private void Start()
     {
         if (fadeInAtStart)
