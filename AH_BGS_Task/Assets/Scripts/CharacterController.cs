@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public class CharacterController : MonoBehaviour
+using UnityEngine.AI;
+
+public class CharacterController : Singleton<CharacterController>
 {
     [Header("References")]
     [SerializeField] Rigidbody2D _rigidbody2D;
     [SerializeField] Collider2D _collider2D;
     [SerializeField] Animator animator;
+    [SerializeField] NavMeshAgent meshAgent;
 
     [Header("Attributes")]
     [SerializeField] float walkSpeed;
@@ -17,11 +20,35 @@ public class CharacterController : MonoBehaviour
     bool isRunning;
     bool isAttacking = false;
     Vector2 velocity;
+    bool hasDestiny = false;
+
+    Interactable interactable;
+
+    private void Start()
+    {
+        meshAgent.enabled = false;
+        _collider2D.enabled = true;
+    }
 
     private void Update()
     {
+        if (hasDestiny && !meshAgent.hasPath)
+        {
+            meshAgent.enabled = false;
+            _collider2D.enabled = true;
+            hasDestiny = false;
+            interactable.PlayerArrived();
+            interactable = null;
+        }
+
+
+        if (hasDestiny) {
+            Flip(interactable.transform.position.x - transform.position.x);
+            return;
+        }
+
         Walk();
-        Flip();
+        Flip(horizontalInput);
 
         if (Input.GetKeyDown(KeyCode.E))
             Attack();
@@ -48,26 +75,38 @@ public class CharacterController : MonoBehaviour
         animator.SetFloat("Speed", currentSpeed);
     }
 
-    void Flip()
+    void Flip(float horizontalValue)
     {
         Vector3 localScale = transform.localScale;
 
-        if (horizontalInput > 0 && localScale.x < 0 || horizontalInput < 0 && localScale.x > 0)
+        if (horizontalValue > 0 && localScale.x < 0 || horizontalValue < 0 && localScale.x > 0)
         {
             localScale.x *= -1;
         }
         transform.localScale = localScale;
     }
-
     void Attack() {
         if (isAttacking) return;
         isAttacking = true;
         _rigidbody2D.velocity = Vector2.zero;
         animator.SetTrigger("Attack");
     }
-
     public void EndAttack()
     {
         isAttacking = false;
+    }
+
+    public void WalkTo(Interactable interactable)
+    {
+        this.interactable = interactable;
+        hasDestiny = true;
+
+        _collider2D.enabled = false;
+        meshAgent.enabled = true;
+        meshAgent.updateRotation = false;
+        meshAgent.updateUpAxis = false;
+
+        animator.SetFloat("Speed", runSpeed);
+        meshAgent.destination = interactable.PlayerPosToStop().position;
     }
 }
