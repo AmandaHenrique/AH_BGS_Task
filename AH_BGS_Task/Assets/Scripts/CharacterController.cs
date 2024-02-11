@@ -98,6 +98,12 @@ public class CharacterController : Singleton<CharacterController>
 
     public void WalkTo(Interactable interactable)
     {
+        if(Utilities.CompareDistance(interactable.PlayerPosToStop(), transform, 0.1f))
+        {
+            interactable.OpenShop();
+            return;
+        }
+
         this.interactable = interactable;
         hasDestiny = true;
 

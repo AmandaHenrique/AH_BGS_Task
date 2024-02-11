@@ -18,8 +18,13 @@ public class Interactable : MonoBehaviour
 
     public virtual void PlayerArrived()
     {
-        Debug.Log("Chegou");
+        Debug.Log("Arrived");
     }
+    public virtual void OpenShop()
+    {
+        Debug.Log("Open Shop");
+    }
+
     private void OnMouseEnter()
     {
         CursorManager.Instance.SetCursor(CursorType.Pointer);
