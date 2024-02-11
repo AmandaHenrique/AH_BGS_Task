@@ -100,7 +100,7 @@ public class CharacterController : Singleton<CharacterController>
     {
         if(Utilities.CompareDistance(interactable.PlayerPosToStop(), transform, 0.1f))
         {
-            interactable.SecondInteraction();
+            interactable.PlayerArrived();
             return;
         }
 

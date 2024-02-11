@@ -17,13 +17,10 @@ public static class NumberFormatter
         {
             case NumberFormat.Time:
                 return FormatTime(number, completeString, mmssFormat);
-                break;
             case NumberFormat.Value:
                 return FormatValue((int)number, completeString, customFontSize);
-                break;
             default:
                 return number.ToString();
-                break;
         }
 
     }

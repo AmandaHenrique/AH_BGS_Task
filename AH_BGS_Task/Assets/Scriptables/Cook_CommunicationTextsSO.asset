@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cook_CommunicationTextsSO
   m_EditorClassIdentifier: 
   texts:
-  - It's easy, buy your ingredients and prepare delicious food
+  - It's easy, I buy your ingredients and prepare delicious food. Check my recipies
   - Do you have some ingredients?
-  - 'How about a delicious apple pie? '
-  - I can pay very well for fresh apples
+  - 'You look hungry, how about a delicious apple pie? '
+  - I can pay very well for fresh apples, do you have it?

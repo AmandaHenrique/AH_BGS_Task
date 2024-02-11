@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texts:
   - You need new clothes, stranger! Check my store.
-  - I have the best clothes in town
-  - I bet you have money to buy a new outfit! don't be a cheapskate
-  - OK, I can give you a discount
-  - Again? Come on!
+  - I have the best clothes in town. Do you want to see?
+  - I bet you have money to buy a new outfit! don't be a cheapskate!
+  - OK, I can give you a discount, good idea right?
+  - Again? Come inside!

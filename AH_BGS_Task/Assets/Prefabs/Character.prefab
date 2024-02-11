@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 753023447}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,8 +52,8 @@ MonoBehaviour:
   _collider2D: {fileID: 6010573532943904666}
   animator: {fileID: 5926020243280912651}
   meshAgent: {fileID: 753023447}
-  walkSpeed: 1.7
-  runSpeed: 2.5
+  walkSpeed: 3
+  runSpeed: 3.5
   currentSpeed: 0
 --- !u!61 &6010573532943904666
 BoxCollider2D:
@@ -112,7 +112,7 @@ NavMeshAgent:
   m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2.5
+  m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

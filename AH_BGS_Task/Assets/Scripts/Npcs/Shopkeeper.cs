@@ -8,43 +8,37 @@ using DG.Tweening;
 public class Shopkeeper : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] Animator animator;
+    Interactable myInteractable;
+    Animator animator;
+    [SerializeField] CharacterInfosSO characterInfosSO;
     [SerializeField] CommunicationTextsSO communicationTextsSo;
 
-    [Header("Dialog UI")]
-    [SerializeField] Image dialogBaloon;
-    [SerializeField] TextMeshProUGUI text;
-
-    float timeToStopCommunicating = 10;
-    Coroutine coroutine;
-
+    private void Awake()
+    {
+        myInteractable = GetComponentInParent<Interactable>();
+        animator = GetComponentInChildren<Animator>();
+    }
     public void Communicate() {
         animator.SetBool("Communicating", true);
-        text.DOFade(0, 0);
-        text.text = communicationTextsSo.GetText();
-
-        dialogBaloon.transform.DOScale(1, 0.4f).SetEase(Ease.OutBack).OnComplete(() =>
-        {
-            if (coroutine != null)
-                StopCoroutine(coroutine);
-
-            coroutine = StartCoroutine(WaitToStopCommunication());
-        });
-        text.DOFade(1, 0.2f).SetDelay(0.3f);
-
+        DialogManager.Instance.ShowDialog(characterInfosSO, communicationTextsSo.GetText(), myInteractable);
     }
 
-    IEnumerator WaitToStopCommunication() {
-
-        yield return new WaitForSeconds(timeToStopCommunicating);
-        StopCommunicate();
-    }
-
-    void StopCommunicate()
+    public void StopCommunicate()
     {
         animator.SetBool("Communicating", false);
-        dialogBaloon.transform.DOScale(0, 0.4f).SetEase(Ease.InBack);
-        text.DOFade(0, 0.2f).SetDelay(0.1f);
 
+    }
+    private void OnMouseEnter()
+    {
+        CursorManager.Instance.SetCursor(CursorType.Pointer);
+    }
+    private void OnMouseExit()
+    {
+        CursorManager.Instance.SetCursor(CursorType.Normal);
+    }
+
+    private void OnMouseUpAsButton()
+    {
+        myInteractable.Interact();
     }
 }

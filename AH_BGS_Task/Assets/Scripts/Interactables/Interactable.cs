@@ -10,7 +10,6 @@ public class Interactable : MonoBehaviour
     {
         CharacterController.Instance.WalkTo(this);
     }
-
     public Transform PlayerPosToStop()
     {
         return posToStop;
@@ -23,6 +22,9 @@ public class Interactable : MonoBehaviour
     public virtual void SecondInteraction()
     {
         Debug.Log("Open Shop");
+    }
+    public virtual void StopInteraction()
+    {
     }
 
     private void OnMouseEnter()

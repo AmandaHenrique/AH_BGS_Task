@@ -127,6 +127,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 6fc555ce1df9fb94a9013f219b446716, type: 3}
+    - target: {fileID: 6538994538689961430, guid: 1a082dd4211f77349a5aa3a079824d7d, type: 3}
+      propertyPath: characterInfosSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 0510462ba4c083146bdd05fc22a105b8, type: 2}
+    - target: {fileID: 6538994538689961430, guid: 1a082dd4211f77349a5aa3a079824d7d, type: 3}
+      propertyPath: communicationTextsSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 89ff1d55ad432e24f8309a57ab3ae985, type: 2}
     - target: {fileID: 7025699765008495184, guid: 1a082dd4211f77349a5aa3a079824d7d, type: 3}
       propertyPath: m_Sprite
       value: 
