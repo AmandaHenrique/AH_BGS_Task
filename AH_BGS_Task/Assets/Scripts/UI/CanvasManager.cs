@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class CanvasManager : Singleton<CanvasManager>
 {
-    public void OpenInventory() { 
-    
+    public void OpenInventory() {
+        InventoryUI.Instance.Show();
     }
 }

@@ -17,11 +17,9 @@ public class Interactable : MonoBehaviour
 
     public virtual void PlayerArrived()
     {
-        Debug.Log("Arrived");
     }
     public virtual void SecondInteraction()
     {
-        Debug.Log("Open Shop");
     }
     public virtual void StopInteraction()
     {
