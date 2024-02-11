@@ -42,7 +42,7 @@ public class CharacterController : Singleton<CharacterController>
         }
 
 
-        if (hasDestiny) {
+        if (hasDestiny&& interactable!= null) {
             Flip(interactable.transform.position.x - transform.position.x);
             return;
         }
