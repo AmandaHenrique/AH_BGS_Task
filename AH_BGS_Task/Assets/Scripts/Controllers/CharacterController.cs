@@ -42,7 +42,7 @@ public class CharacterController : Singleton<CharacterController>
         }
 
 
-        if (hasDestiny&& interactable!= null) {
+        if (hasDestiny && interactable!= null) {
             Flip(interactable.transform.position.x - transform.position.x);
             return;
         }
@@ -85,7 +85,7 @@ public class CharacterController : Singleton<CharacterController>
         }
         transform.localScale = localScale;
     }
-    void Attack() {
+    public void Attack() {
         if (isAttacking) return;
         isAttacking = true;
         _rigidbody2D.velocity = Vector2.zero;

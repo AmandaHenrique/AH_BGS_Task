@@ -23,7 +23,8 @@ public class ConsumableManager : Singleton<ConsumableManager>
 
     public void Setup() {
 
-        money.Increment(DataManager.Instance.Player_Data.money);
+        //money.Increment(DataManager.Instance.Player_Data.money);
+        money.Increment(100);
     }
 
     public Consumable GetConsumable(ConsumableType type)

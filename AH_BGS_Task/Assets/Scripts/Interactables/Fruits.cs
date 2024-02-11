@@ -11,6 +11,7 @@ public class Fruits : Interactable
         if (!canInteract) return;
         canInteract = false;
         base.PlayerArrived();
+        CharacterController.Instance.Attack();
         Debug.Log("Take and animation");
         Destroy(gameObject, 1);
     }
