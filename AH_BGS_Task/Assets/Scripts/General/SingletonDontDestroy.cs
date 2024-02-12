@@ -25,7 +25,7 @@ public class SingletonDontDestroy<T> : MonoBehaviour where T : Component
                     Destroy(objs[i].gameObject);
                 }
             }
-            DontDestroyOnLoad(gameObject);
+            DontDestroyOnLoad(this.gameObject);
         }
         else
             Destroy(gameObject);

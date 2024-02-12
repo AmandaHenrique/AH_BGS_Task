@@ -44,6 +44,6 @@ public class ConsumableManager : SingletonDontDestroy<ConsumableManager>
     }
     void UpdateCanvasInfos()
     {
-        moneyTxt.text = NumberFormatter.Format(ConsumableManager.Instance.GetConsumable(ConsumableType.Money).value, NumberFormat.Value);
+        moneyTxt.text = NumberFormatter.Format(GetConsumable(ConsumableType.Money).value, NumberFormat.Value);
     }
 }

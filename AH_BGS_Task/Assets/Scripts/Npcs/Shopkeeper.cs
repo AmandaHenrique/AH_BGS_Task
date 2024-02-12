@@ -21,6 +21,7 @@ public class Shopkeeper : MonoBehaviour
     public void Communicate() {
         animator.SetBool("Communicating", true);
         DialogManager.Instance.ShowDialog(characterInfosSO, communicationTextsSo.GetText(), myInteractable);
+        AudioManager.Instance.PlayeExpression();
     }
 
     public void StopCommunicate()
