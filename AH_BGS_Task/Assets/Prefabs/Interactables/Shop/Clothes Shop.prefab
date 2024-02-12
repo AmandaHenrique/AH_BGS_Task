@@ -72,9 +72,17 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3357980911148115330, guid: ac89ae634efb1a9498855301bccff49c, type: 3}
+      propertyPath: m_Size.y
+      value: 3.7234616
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357980911148115330, guid: ac89ae634efb1a9498855301bccff49c, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.12930131
+      objectReference: {fileID: 0}
     - target: {fileID: 3357980911148115331, guid: ac89ae634efb1a9498855301bccff49c, type: 3}
       propertyPath: m_Name
-      value: Clothes Shop
+      value: Clothes Shop Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3357980911148115332, guid: ac89ae634efb1a9498855301bccff49c, type: 3}
       propertyPath: m_RootOrder
@@ -98,15 +106,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3357980911148115332, guid: ac89ae634efb1a9498855301bccff49c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3357980911148115332, guid: ac89ae634efb1a9498855301bccff49c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3357980911148115332, guid: ac89ae634efb1a9498855301bccff49c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3357980911148115332, guid: ac89ae634efb1a9498855301bccff49c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -106,7 +106,7 @@ public class CharacterController : Singleton<CharacterController>
 
         this.interactable = interactable;
         hasDestiny = true;
-
+        _rigidbody2D.velocity = Vector2.zero;
         _collider2D.enabled = false;
         meshAgent.enabled = true;
         meshAgent.updateRotation = false;
