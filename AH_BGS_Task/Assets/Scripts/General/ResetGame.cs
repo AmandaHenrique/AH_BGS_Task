@@ -11,10 +11,6 @@ public class ResetGame : MonoBehaviour
     [SerializeField] Sprite body;
     [SerializeField] Sprite sword;
     [SerializeField] ConsumableManager consumableManager;
-    void Awake()
-    {
-        ResetVariables();
-    }
 
     void ResetVariables() {
         for (int i = 0; i < inventorySO.ingredientInfos.Length; i++)

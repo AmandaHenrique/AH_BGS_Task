@@ -19,6 +19,7 @@ public class CustomizationUI : MonoBehaviour
     }
     public void Done()
     {
+        DataManager.Instance.SaveData();
         FadeScreen.Instance.FadeOut(LoadScene);
     }
     public void LoadScene()

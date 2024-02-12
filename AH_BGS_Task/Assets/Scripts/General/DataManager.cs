@@ -2,20 +2,29 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class DataManager : Singleton<DataManager>
+public class DataManager : SingletonDontDestroy<DataManager>
 {
     [SerializeField]
     public PlayerData Player_Data;
     public static Action OnLoaded;
-    private string Save_Key = "SaveData";
-    public bool gameQuit = false;
+    private string Save_Key = "SaveData_Prototype";
+    bool gameQuit = false;
 
-    private void Awake()
+    [SerializeField] InventorySO inventorySO;
+    [SerializeField] CustomizationInfosSO customizationInfosSO;
+    [SerializeField] ConsumableManager consumableManager;
+    [SerializeField] ItemInfosSO itemInfosSO;
+
+    [SerializeField] Sprite head;
+    [SerializeField] Sprite body;
+    [SerializeField] Sprite sword;
+
+    protected override void Awake()
     {
+        base.Awake();
         LoadData();
     }
-
-    private void OnApplicationFocus(bool focus)
+    /*private void OnApplicationFocus(bool focus)
     {
         if (!focus)
             SaveData();
@@ -25,7 +34,7 @@ public class DataManager : Singleton<DataManager>
     {
         gameQuit = true;
         SaveData();
-    }
+    }*/
 
     /// <summary>
     /// Saves Player Data with current values.
@@ -49,7 +58,8 @@ public class DataManager : Singleton<DataManager>
 
     public void UpdateData()
     {
-        Player_Data.money = ConsumableManager.Instance.money.value;
+        Player_Data.money = consumableManager.money.value;
+        Player_Data.sectionInfos = itemInfosSO.sectionInfos;
     }
 
 
@@ -63,25 +73,46 @@ public class DataManager : Singleton<DataManager>
         if (PlayerPrefs.HasKey(Save_Key))
         {
             Player_Data = JsonUtility.FromJson<PlayerData>(PlayerPrefs.GetString(Save_Key));
+            itemInfosSO.sectionInfos = Player_Data.sectionInfos;
+
+            customizationInfosSO.head = itemInfosSO.GetSelectedPart(BodyPart.Head);
+            customizationInfosSO.body = itemInfosSO.GetSelectedPart(BodyPart.Body);
+            customizationInfosSO.sword = itemInfosSO.GetSelectedPart(BodyPart.Sword);
+
+            ConsumableManager.Instance.money.value = Player_Data.money;
+
         }
         else
         {
-            Player_Data.money = 0;
+            ConsumableManager.Instance.money.value = 200;
+            for (int i = 0; i < itemInfosSO.sectionInfos.Length; i++)
+            {
+                for (int j = 0; j < itemInfosSO.sectionInfos[i].itemInfos.Length; j++)
+                {
+                    itemInfosSO.sectionInfos[i].itemInfos[j].isSelected = false;
+                    itemInfosSO.sectionInfos[i].itemInfos[j].isUnlocked = false;
+                }
+            }
+            itemInfosSO.sectionInfos[0].itemInfos[0].isUnlocked = true;
+            itemInfosSO.sectionInfos[1].itemInfos[0].isUnlocked = true;
+            itemInfosSO.sectionInfos[2].itemInfos[0].isUnlocked = true;
+
+            itemInfosSO.sectionInfos[0].itemInfos[0].isSelected = true;
+            itemInfosSO.sectionInfos[1].itemInfos[0].isSelected = true;
+            itemInfosSO.sectionInfos[2].itemInfos[0].isSelected = true;
+
+            customizationInfosSO.head = head;
+            customizationInfosSO.body = body;
+            customizationInfosSO.sword = sword;
         }
 
         OnLoaded?.Invoke();
     }
-
-    /*public void ToggleSounds()
-    {
-        Player_Data.soundsOn = !Player_Data.soundsOn;
-        AudioManager.Instance.MuteAudio(!Player_Data.soundsOn);
-    }*/
 }
 
 [System.Serializable()]
 public class PlayerData
 {
     public float money = 0;
-    public bool soundsOn = true;
+    public SectionInfo[] sectionInfos;
 }

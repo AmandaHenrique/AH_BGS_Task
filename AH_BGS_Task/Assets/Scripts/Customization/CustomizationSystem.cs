@@ -13,6 +13,7 @@ public class CustomizationSystem : Singleton<CustomizationSystem>
 
     private void Start()
     {
+        DataManager.Instance.LoadData();
         UpdateCharacter();
     }
 
@@ -33,6 +34,7 @@ public class CustomizationSystem : Singleton<CustomizationSystem>
                 break;
         }
         UpdateCharacter();
+        DataManager.Instance.SaveData();
     }
 
     public void UpdateCharacter()
